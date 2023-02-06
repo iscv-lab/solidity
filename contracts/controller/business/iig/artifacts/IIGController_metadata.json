@@ -1,0 +1,643 @@
+{
+	"compiler": {
+		"version": "0.8.17+commit.8df45f5f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "listBusinessAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "listEmployeeAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "listIIGRequestAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "listIIGLRResultAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "listIIGSWResultAddress",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferred",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "_checkExistBusinessAccount",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "_checkExistEmployeeAccount",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "employeeId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "businessId",
+						"type": "uint256"
+					}
+				],
+				"name": "_checkExistIIGRequestLR",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "employeeId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "businessId",
+						"type": "uint256"
+					}
+				],
+				"name": "_checkExistIIGRequestSW",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "employeeId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "businessId",
+						"type": "uint256"
+					}
+				],
+				"name": "addLRRequest",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "businessId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "employeeId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "testDate",
+						"type": "uint256"
+					},
+					{
+						"internalType": "enum IIGShiftTest",
+						"name": "shiftTest",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint256",
+						"name": "expireDate",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "listeningScore",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "readingScore",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "requestId",
+						"type": "uint256"
+					}
+				],
+				"name": "addLRResult",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "employeeId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "businessId",
+						"type": "uint256"
+					}
+				],
+				"name": "addSWRequest",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "businessId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "employeeId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "testDate",
+						"type": "uint256"
+					},
+					{
+						"internalType": "enum IIGShiftTest",
+						"name": "shiftTest",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint256",
+						"name": "expireDate",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "speakingScore",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "writingScore",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "requestId",
+						"type": "uint256"
+					}
+				],
+				"name": "addSWResult",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "destroy",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getAllIIGLRResult",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "id",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "businessId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "employeeId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "testDate",
+								"type": "uint256"
+							},
+							{
+								"internalType": "enum IIGShiftTest",
+								"name": "shiftTest",
+								"type": "uint8"
+							},
+							{
+								"internalType": "uint256",
+								"name": "expireDate",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "listeningScore",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "readingScore",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "time",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct IIGLRResult[]",
+						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getAllIIGRequest",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "id",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "businessId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "employeeId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "requestDate",
+								"type": "uint256"
+							},
+							{
+								"internalType": "enum IIGRequestType",
+								"name": "requestType",
+								"type": "uint8"
+							},
+							{
+								"internalType": "enum IIGStatusRequest",
+								"name": "statusRequest",
+								"type": "uint8"
+							}
+						],
+						"internalType": "struct IIGRequest[]",
+						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getAllIIGSWResult",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "id",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "businessId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "employeeId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "testDate",
+								"type": "uint256"
+							},
+							{
+								"internalType": "enum IIGShiftTest",
+								"name": "shiftTest",
+								"type": "uint8"
+							},
+							{
+								"internalType": "uint256",
+								"name": "expireDate",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "speakingScore",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "writingScore",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "time",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct IIGSWResult[]",
+						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "transferOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"owner()": {
+					"details": "Returns the address of the current owner."
+				},
+				"transferOwnership(address)": {
+					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"controller/business/iig/IIGController.sol": "IIGController"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@openzeppelin/contracts/utils/Context.sol": {
+			"keccak256": "0xe2e337e6dde9ef6b680e07338c493ebea1b5fd09b43424112868e9cc1706bca7",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6df0ddf21ce9f58271bdfaa85cde98b200ef242a05a3f85c2bc10a8294800a92",
+				"dweb:/ipfs/QmRK2Y5Yc6BK7tGKkgsgn3aJEQGi5aakeSPZvS65PV8Xp3"
+			]
+		},
+		"abstract/Ownable.sol": {
+			"keccak256": "0x03e8be28dacbc0d83f761b94d10e85750e8d37082a65836e2ec97b9018a7c2c6",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://2522b935ab51e9f90b36afb755ed7a7ff5bd48a9c5e0df5bd0f28914d4e7b7c6",
+				"dweb:/ipfs/QmQC1eh1tj6TEM4eT5HEZwCBiQ75AECmHC1ojo39hMQrE8"
+			]
+		},
+		"abstract/Permission.sol": {
+			"keccak256": "0x2d06398c09730b07a537e83026b2982364f34c4f7c1b5432230c636d2b9b9cbb",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f6c209eec91528c7a3b3b0db65583ebd3497209a72742d727a8fcab87dfc7fdb",
+				"dweb:/ipfs/QmYsCPauyHq4RuZggcw3GoVeC7wRRWtbagHqxqYRU6ue75"
+			]
+		},
+		"controller/business/iig/IIGController.sol": {
+			"keccak256": "0xccd1ca65ae411633052c03e8d32806a7a1e43f91f2238a8dca1f7e6224af9959",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://3070f3ded450c4285e3334bb8847cb20e800dd577e9e78ff556ba576665a9835",
+				"dweb:/ipfs/QmaZ1sWzpedbbXefaN62PRe77KQdwTcKbm7tG1d1eKTFWp"
+			]
+		},
+		"cursor/business/ListBusinessCursor.sol": {
+			"keccak256": "0xfb3952fd1f9ac42eb003a8ba799f2cec3dd20f3245792ed29d15dd426edc7310",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://abe93689efb871d15de289c1e63adcae45e6206417f3e9b206b04bf4d1911d6f",
+				"dweb:/ipfs/QmajhFzv7WVLWqMkZ5QdPnZiEsAqYB56BUnj9wuVKrPB1Z"
+			]
+		},
+		"cursor/business/iig/ListIIGLRResultCursor.sol": {
+			"keccak256": "0x09c9858d81b66c345fa59d6a55389eb456f9cc3a434a01510f8fad76ac74081d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://3503498f799f5ebe170b9008459c8617f047a4dc7d71de87b3714ac81a13557c",
+				"dweb:/ipfs/Qmad3HHYuF2r52JGh5fSdTTTphzuQSy5tDy3KUpRcn2TUo"
+			]
+		},
+		"cursor/business/iig/ListIIGRequestCursor.sol": {
+			"keccak256": "0xd018843919cf0ab1e81f98ed7c61761f62cb19d516151883a8eceaaafcd003ef",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6ef46103d359919bc548d9d9877d576afb675f315697449e007fc67b0466df47",
+				"dweb:/ipfs/QmNPmJsFoYYdhr6NUabDSH1Nyq5jZEhVXsmQbqBC8o2eXf"
+			]
+		},
+		"cursor/business/iig/ListIIGSWResultCursor.sol": {
+			"keccak256": "0xa1caa3c81912bc661ed6aad41c90fb6b7667a96ab9168f2671e929bc6469e27d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://2e691582e700d8e7c9075cd1f1634f7978065ed869def3d7c55e179aaf80dc80",
+				"dweb:/ipfs/QmZ2sDoZghpcB9YSAAz8Cq7MNdMTk3uXHmo4jGLqigDr3S"
+			]
+		},
+		"cursor/employee/ListEmployeeCursor.sol": {
+			"keccak256": "0x5d8159c84f6404b1ddd94e8e255e11c56653f9d8d18e0e3701809a3d2d47dbab",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://2d72c57ae412b5e401864472d85d9b06469161371d0ecf5ef830d74c193d8120",
+				"dweb:/ipfs/QmfSyuvpCJqQUMYJ3WkdpGcULj36YVJvi81AjRkPEd9TLE"
+			]
+		},
+		"database/business/ListBusiness.sol": {
+			"keccak256": "0xf728b506f54eb2036876c879dd9349a6082b666a164c1c40dd1b38ee49cf815b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://44c42701a8590362977ec14f4a8c5f86a0abc8a4563245e7402e417963e6ca94",
+				"dweb:/ipfs/QmTcNR99RngULHBcF6pF32oBv1UKrgxU9Y1ecES6r5PirV"
+			]
+		},
+		"database/business/igg/ListIIGLRResult.sol": {
+			"keccak256": "0x7c95873f101b97c3ef4266e095e715400d1678bccb7d90e4be29e242624d88e4",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://9f2c0dad339690122a3b33cfcdb0de77641b1274c3a45cc71df6c79cbed63dc2",
+				"dweb:/ipfs/QmP465hyJjbjFJWhkmB2iXiQHrWXxeFHVvNoTqDRgQrFJj"
+			]
+		},
+		"database/business/igg/ListIIGRequest.sol": {
+			"keccak256": "0x58eacb857b1d845c75d45e2ffa74f06156b7d5adbf2732e2c28291f6acd74686",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f8520819f1b458916d8d111482c8cc6028a1baf496ead3b1018485bd214a12d9",
+				"dweb:/ipfs/QmZbYXweoe5fPk1HgrxPoFbM5hZnGrEW6uzCo81vp9Kkox"
+			]
+		},
+		"database/business/igg/ListIIGSWResult.sol": {
+			"keccak256": "0x28adcc4007c119bda56f51c0319382196cf2010f9c7ca40e0c7dcb69c3f36176",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://801eed7df3eeff3ec511e86741810a8bb53c4f0ce501abf9ef755dd321089071",
+				"dweb:/ipfs/QmUASnGJvmeq9fwoYfpdLdYXCeE5r5EivSbYt9X5nE5Hoo"
+			]
+		},
+		"database/employee/ListEmployee.sol": {
+			"keccak256": "0xe16095cdb51af5e61c5dfcab87066da931675b013d7df85640083a244c223c94",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://a6e45740af458194ae8f11a05ae2b6a1b48650dbe7ede8ada3977af1acc2f159",
+				"dweb:/ipfs/QmRPgXfUgEc2qCnNd4kJP5FCYvgTPXErH9wWKkezbvMExQ"
+			]
+		},
+		"struct/business/BusinessStruct.sol": {
+			"keccak256": "0x5afffe9067057f89858bc444fb508f0a0d2e4551ba3e25ba41e95958b29d5e32",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://cc0ba7c77e3021189ff9ab08c795cd792f5ef9458a163ac6f4718bbd04b4a36d",
+				"dweb:/ipfs/QmZ7Tkx5PvvJJkj5tRqWfeMSHcx43DVDDXR59ixJY1J4BR"
+			]
+		},
+		"struct/business/iig/IIGRequestStruct.sol": {
+			"keccak256": "0x0c34d36dfb8eced9d1dae0075d7a1a826f383d42c368d23062e120388e201603",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://05329efd7740f0fe41e3212d22dd5efa00cc1c61afd04b55f3fbec2fd00940e6",
+				"dweb:/ipfs/QmZXMurCTug35cVSMoE2RzL9n5ZoVAZ9pC4hXqsgEcxe9F"
+			]
+		},
+		"struct/business/iig/IIGResultStruct.sol": {
+			"keccak256": "0x615d31da6711a7662e5d65af1d3db1bc868f540caa452fa353886f81195236ee",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://334fda85886d161afb2f6df74ef066935fcdd9230365e276ec0cf5f9ab61ee03",
+				"dweb:/ipfs/QmQbpFQG5etPg7DJWBWvYLdP6DnHVx9yteuu7vgDWR5nkt"
+			]
+		},
+		"struct/employee/EmployeeStruct.sol": {
+			"keccak256": "0x653c897ab96a4ee85b2116211ed247da3212ee46135fa8dc03a6c406a83db46e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8842018a6d0c04b70709e8f69a04cbdff4527f2544ec306a5559fb2ef08b2a29",
+				"dweb:/ipfs/QmdL4Tsjg4FUhMYMmUHF3QLnLiRPLQhHd8UegRgTHHioB6"
+			]
+		}
+	},
+	"version": 1
+}

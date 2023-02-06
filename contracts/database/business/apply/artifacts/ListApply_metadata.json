@@ -1,0 +1,408 @@
+{
+	"compiler": {
+		"version": "0.8.17+commit.8df45f5f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "applyId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "employeeId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "businessId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "postId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "time",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "status",
+								"type": "uint256"
+							}
+						],
+						"indexed": false,
+						"internalType": "struct Apply",
+						"name": "item",
+						"type": "tuple"
+					}
+				],
+				"name": "Add",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferred",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "applyId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "employeeId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "businessId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "postId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "time",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "status",
+								"type": "uint256"
+							}
+						],
+						"indexed": false,
+						"internalType": "struct Apply",
+						"name": "item",
+						"type": "tuple"
+					}
+				],
+				"name": "Remove",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "applyId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "employeeId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "businessId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "postId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "time",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "status",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct Apply",
+						"name": "item",
+						"type": "tuple"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "secret",
+						"type": "bytes32"
+					}
+				],
+				"name": "add",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "secret",
+						"type": "bytes32"
+					}
+				],
+				"name": "at",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "applyId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "employeeId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "businessId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "postId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "time",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "status",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct Apply",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "destroy",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "secret",
+						"type": "bytes32"
+					}
+				],
+				"name": "getLength",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "secret",
+						"type": "bytes32"
+					}
+				],
+				"name": "hide",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "secret",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint256",
+						"name": "status",
+						"type": "uint256"
+					}
+				],
+				"name": "setStatus",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "transferOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"owner()": {
+					"details": "Returns the address of the current owner."
+				},
+				"transferOwnership(address)": {
+					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"database/business/apply/ListApply.sol": "ListApply"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"abstract/Ownable.sol": {
+			"keccak256": "0xd18541332063ae80622d2dae885641c5744a73440e922f8c7b0f27e9eda48479",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://443f4b34991a801646f9df38cd47fbf3c22928f24d2528466addaf49291feaf9",
+				"dweb:/ipfs/QmUtNkRcKKBbd8YGwB1hUumrVBVc3Q4qK2D2FhrbkpcaCT"
+			]
+		},
+		"constant/SecretKey.sol": {
+			"keccak256": "0x47ac9ee05d54b25ca31aa59b1c8088b442e3cab3023e013a9049bad3a4c85547",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://9556d31ced35c1a557d8dad981fedfa8e672b8b5d1d29cf2d322958be517b832",
+				"dweb:/ipfs/QmbWeckHUBYBdFm18bVPv9ns5yKPSBm7kNKotLvKoo9ip4"
+			]
+		},
+		"database/business/apply/ListApply.sol": {
+			"keccak256": "0x4240d785908967f0ab31624434b65d70fbab034107a1f196bf2a825577392cfe",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://d204718020741516e0b99de887449438a712e8d41823807068bae1e8e1b209e4",
+				"dweb:/ipfs/QmVog7sHSYD4cD3pDeK4bMcqN8NVVPgHKNVivXpQv6KpAM"
+			]
+		},
+		"struct/business/apply/ApplyStruct.sol": {
+			"keccak256": "0x5c46440c088faece852950ac50cd94cee7d8973346f419cde9386b9c827e447a",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8a2347174e8b4e9e6a89f4fa32e6d6ca115850b981570055ccebef71384844e1",
+				"dweb:/ipfs/QmQjtKsd38DCfzyR2yb6NXzHaP1qJDWcekso252CPohJrU"
+			]
+		}
+	},
+	"version": 1
+}

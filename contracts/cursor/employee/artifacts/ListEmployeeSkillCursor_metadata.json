@@ -1,0 +1,118 @@
+{
+	"compiler": {
+		"version": "0.8.17+commit.8df45f5f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "employeeId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "title",
+						"type": "string"
+					}
+				],
+				"name": "_checkExistSkill",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"cursor/employee/ListEmployeeSkillCursor.sol": "ListEmployeeSkillCursor"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@openzeppelin/contracts/utils/Context.sol": {
+			"keccak256": "0xe2e337e6dde9ef6b680e07338c493ebea1b5fd09b43424112868e9cc1706bca7",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6df0ddf21ce9f58271bdfaa85cde98b200ef242a05a3f85c2bc10a8294800a92",
+				"dweb:/ipfs/QmRK2Y5Yc6BK7tGKkgsgn3aJEQGi5aakeSPZvS65PV8Xp3"
+			]
+		},
+		"abstract/Ownable.sol": {
+			"keccak256": "0x03e8be28dacbc0d83f761b94d10e85750e8d37082a65836e2ec97b9018a7c2c6",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://2522b935ab51e9f90b36afb755ed7a7ff5bd48a9c5e0df5bd0f28914d4e7b7c6",
+				"dweb:/ipfs/QmQC1eh1tj6TEM4eT5HEZwCBiQ75AECmHC1ojo39hMQrE8"
+			]
+		},
+		"abstract/Permission.sol": {
+			"keccak256": "0x2d06398c09730b07a537e83026b2982364f34c4f7c1b5432230c636d2b9b9cbb",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f6c209eec91528c7a3b3b0db65583ebd3497209a72742d727a8fcab87dfc7fdb",
+				"dweb:/ipfs/QmYsCPauyHq4RuZggcw3GoVeC7wRRWtbagHqxqYRU6ue75"
+			]
+		},
+		"cursor/employee/ListEmployeeSkillCursor.sol": {
+			"keccak256": "0xbce1e83b0f764843285c3fa7a162b765552759cd3d48ad20615dd6ce023617e2",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://28fb30386ee38b77a95f65efc3e6493d920e90cbabdb4cc14b67d5b9d12b0625",
+				"dweb:/ipfs/QmSSyiGjHpvBq3bVb8rHNG3HHpmKBtuBF6kzMFEwQWQX4G"
+			]
+		},
+		"database/employee/ListEmployeeSkill.sol": {
+			"keccak256": "0x2aa8c440afb91f0febec1b23ef586c39cfe05e97dd53a1bf83a9a04fd24a5992",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://af59e2b803a0600405ff8ce8bdc7f49be80cdeff9323e73c983cb0a92707009b",
+				"dweb:/ipfs/QmZEiH4zDD5JVECaDZDLWvrHipHXeZEV6Q6uouL367X2Cb"
+			]
+		},
+		"library/StringTool.sol": {
+			"keccak256": "0xba28bfe32940b8da35668f974f8d26720eb5f4c1136141186924f80c21cdce4a",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://2ab52bbe122cb04fba026c33527932c07173d879967658357cf3bb5b3ded6c93",
+				"dweb:/ipfs/QmeQj79Ao6SojtUfHiziLfNtU2C1baMRTmBep6gRQ2Hysi"
+			]
+		},
+		"struct/employee/EmployeeSkillStruct.sol": {
+			"keccak256": "0x8052cbf1527ce2c3f4ce7e00020feab706d49a2534f15ae7bc7e4d5b6af29cb1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://5ff37ee5f2ab7bbeeefafc497088f5ed23208849505f1cecb175b102d5bcbbb8",
+				"dweb:/ipfs/QmXHt2bCQyTJ8cDmtT6qcX8vN1T4pi7EuA8k43HJVqCPV1"
+			]
+		}
+	},
+	"version": 1
+}

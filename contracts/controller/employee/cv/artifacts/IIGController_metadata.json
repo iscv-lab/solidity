@@ -1,0 +1,266 @@
+{
+	"compiler": {
+		"version": "0.8.17+commit.8df45f5f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "listEmployeeAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "listCVAddress",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferred",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "_checkExistEmployeeAccount",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "employeeId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "data",
+						"type": "string"
+					}
+				],
+				"name": "addCV",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "destroy",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "employeeId",
+						"type": "uint256"
+					}
+				],
+				"name": "getListCVByEmployeeId",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "employeeId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "cvId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "data",
+								"type": "string"
+							}
+						],
+						"internalType": "struct CV[]",
+						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "transferOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"owner()": {
+					"details": "Returns the address of the current owner."
+				},
+				"transferOwnership(address)": {
+					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"controller/employee/cv/CVController.sol": "IIGController"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"abstract/Ownable.sol": {
+			"keccak256": "0xd18541332063ae80622d2dae885641c5744a73440e922f8c7b0f27e9eda48479",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://443f4b34991a801646f9df38cd47fbf3c22928f24d2528466addaf49291feaf9",
+				"dweb:/ipfs/QmUtNkRcKKBbd8YGwB1hUumrVBVc3Q4qK2D2FhrbkpcaCT"
+			]
+		},
+		"constant/SecretKey.sol": {
+			"keccak256": "0x47ac9ee05d54b25ca31aa59b1c8088b442e3cab3023e013a9049bad3a4c85547",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://9556d31ced35c1a557d8dad981fedfa8e672b8b5d1d29cf2d322958be517b832",
+				"dweb:/ipfs/QmbWeckHUBYBdFm18bVPv9ns5yKPSBm7kNKotLvKoo9ip4"
+			]
+		},
+		"controller/employee/cv/CVController.sol": {
+			"keccak256": "0x4acc1c00320c9254249035980873624191dfb97e70d402fedcbe0f3d0dfdd433",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://b822e584fcf608a13ac5d6b03031931987c281de3705d67f9282115a1e7db395",
+				"dweb:/ipfs/QmbDTSNeJsG8p93AQDuQGGDvn2EeHCL4kbmPQFm3hPtwFF"
+			]
+		},
+		"cursor/ListEmployeeCursor.sol": {
+			"keccak256": "0x52754d58702092788ed44a2641056de666eb2ec303011d6c9f8e80a13468caca",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c3074ddada18f280ccd23f5ce5055dbbbedd4b01f0566b301eb22ef947ec9e16",
+				"dweb:/ipfs/QmS7fv83SqsQKweiEHzwRcRyFpCPbXHE95yePz1ru6iEJi"
+			]
+		},
+		"cursor/employee/cv/ListCVCursor.sol": {
+			"keccak256": "0xbf14e0a95b12045364d83a89b29f22cdee12f8f1affd583f44e66eb3aa30269d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://7cd968a7f8566ab663235f2512d90855bf734ad3d18ac4d6027d2ab0dfed68bb",
+				"dweb:/ipfs/QmdvV6SsoHZngau6J2UcbK6V72XR29G5iXHn1gzQSVnKGN"
+			]
+		},
+		"database/ListEmployee.sol": {
+			"keccak256": "0x345696262683bf88d9beaf0fdf27dc60606cdaab41f19c7ea6aca60ac600fb82",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://55001679adbb4e4d882b199c7a348344e1238724718790c5a78bad2974e53bc1",
+				"dweb:/ipfs/QmZAL1v23ZKAjPQrxHVQX9xkajehKuSMEhFdE1L1M7yP8U"
+			]
+		},
+		"database/employee/cv/ListCV.sol": {
+			"keccak256": "0x3bb111bbe85e9ebd942a37f0e6f508f1a8c03046353f291e392aba6df2d489bb",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://5db90e850b7171ef7ce8ec9b4796afce4c16ac63b7212117863f91e80a0d17c8",
+				"dweb:/ipfs/QmXP1o3wAWAdV3YsmvVEVFkQSZsUZvekZwJ6WHAY5Xzvbg"
+			]
+		},
+		"library/StringTool.sol": {
+			"keccak256": "0xba28bfe32940b8da35668f974f8d26720eb5f4c1136141186924f80c21cdce4a",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://2ab52bbe122cb04fba026c33527932c07173d879967658357cf3bb5b3ded6c93",
+				"dweb:/ipfs/QmeQj79Ao6SojtUfHiziLfNtU2C1baMRTmBep6gRQ2Hysi"
+			]
+		},
+		"struct/employee/EmployeeStruct.sol": {
+			"keccak256": "0x3137665932a7405a2c27ed3d8ca126d5661b548bf5a6b4b866ec33f03bf0c28d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://709caf3a120179305e17b21aac450dab81dc56fef6777b56dd7f47c5336296f7",
+				"dweb:/ipfs/QmRdBfFYTFBZiGNg9Ewd9K5ByQbetCKnGvWrEF9kVcat6j"
+			]
+		},
+		"struct/employee/cv/CVStruct.sol": {
+			"keccak256": "0xbb862924a7f27e325fc721517ca4a57488bded0da0723e4c0aac5b18a3a5982e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://9ca062c29b1edc4c7b585844b00ef467fee2bdac9402bd9f17374dd42295dbbd",
+				"dweb:/ipfs/QmfNcBy93U4qSHvPjyp9fsDAKYquPH1ZG78dqkF2jtWNur"
+			]
+		}
+	},
+	"version": 1
+}
