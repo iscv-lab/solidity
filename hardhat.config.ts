@@ -10,6 +10,8 @@ const config: HardhatUserConfig = {
         "0db507968e1901d170f37bd2e37a59e77584f07e4ab92548abb3af95dac340d5",
       ],
     },
+    hardhat: {
+    },
   },
 };
 

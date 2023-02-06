@@ -5,12 +5,9 @@ import { ethers } from "hardhat";
 export async function main(props: { address: string; approve: string }) {
   const [deployer] = await ethers.getSigners();
   const { address, approve } = props;
-  const ListBusinessAppointment = await ethers.getContractFactory(
-    "ListBusinessAppointment"
-  );
-  const listBusinessAppointment = ListBusinessAppointment.attach(address);
-  listBusinessAppointment.approve(approve, { from: deployer.address });
-  //   console.log("Token address:", (await listEmployee.owner()).toString());
+  const ListBusinessPost = await ethers.getContractFactory("ListBusinessPost");
+  const listBusinessPost = ListBusinessPost.attach(address);
+  listBusinessPost.approve(approve, { from: deployer.address });
 }
 
 // We recommend this pattern to be able to use async/await everywhere
