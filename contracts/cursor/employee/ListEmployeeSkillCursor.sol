@@ -26,9 +26,9 @@ abstract contract ListEmployeeSkillCursor {
         _;
     }
 
-    modifier onlySkillIdBelongstoId(uint256 id, uint256 skillId) {
+    modifier onlySkillIdBelongstoId(uint256 id, uint256 employeeId) {
         require(
-            _checkIdBelongstoEmployeeId(id, skillId),
+            _checkIdBelongstoEmployeeId(id, employeeId),
             "Employee Skill Cursor: request skill"
         );
         _;

@@ -116,7 +116,7 @@ contract EmployeeController is
         uint256 id,
         uint256 skillId,
         uint256 level
-    ) public onlyIdBelongstoAddress(id) onlySkillIdBelongstoId(id, skillId) {
+    ) public onlyIdBelongstoAddress(id) onlySkillIdBelongstoId(skillId, id) {
         _getListEmployeeSkillCursor().setLevel(skillId, level);
     }
 
