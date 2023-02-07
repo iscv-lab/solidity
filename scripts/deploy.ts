@@ -24,7 +24,6 @@ async function main() {
   try {
     const [deployer] = await ethers.getSigners();
     console.log("Deploying contracts with the account:", deployer.address);
-    console.log("Account balance:", (await deployer.getBalance()).toString());
     const listEmployeeAddress = await ListEmployee.main();
     logger(`listEmployeeAddress: ${listEmployeeAddress}`);
     const listEmployeeSkillAddress = await ListEmployeeSkill.main();
