@@ -37,7 +37,7 @@ abstract contract ListBusinessCursor {
     modifier onlyBusinessIdBelongstoAddress(uint256 id) {
         require(
             _checkExistBusinessAccount(),
-            "ListBusinessCursor: already existed account"
+            "ListBusinessCursor: not exist account"
         );
         require(
             _checkBusinessIdBelongstoAddress(id),
@@ -48,21 +48,24 @@ abstract contract ListBusinessCursor {
 
     function _checkExistBusinessAccount() public view returns (bool) {
         uint256 id = listBusinessCursor.findIdByAddress(msg.sender);
-        if (id > 0) return true;
-        return false;
+        if (id == type(uint256).max) return false;
+        return true;
     }
 
-    function _checkBusinessIdBelongstoAddress(
-        uint256 id
-    ) internal view returns (bool) {
+    function _checkBusinessIdBelongstoAddress(uint256 id)
+        internal
+        view
+        returns (bool)
+    {
         Profile memory item = listBusinessCursor.at(id);
         return _checkBusinessUser(item.user, msg.sender);
     }
 
-    function _checkBusinessUser(
-        address user,
-        address value
-    ) internal pure returns (bool) {
+    function _checkBusinessUser(address user, address value)
+        internal
+        pure
+        returns (bool)
+    {
         if (user == value) return true;
         return false;
     }

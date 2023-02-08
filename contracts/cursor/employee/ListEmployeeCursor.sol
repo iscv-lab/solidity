@@ -22,7 +22,7 @@ abstract contract ListEmployeeCursor {
     modifier onlyIdBelongstoAddress(uint256 id) {
         require(
             _checkExistEmployeeAccount(),
-            "ListEmployeeCursor: address not belongs to the account"
+            "ListEmployeeCursor: not exist account"
         );
         require(
             _checkIdBelongstoAddress(id),
