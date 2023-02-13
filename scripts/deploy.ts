@@ -79,7 +79,7 @@ async function main() {
     });
 
     await ListBusinessApplyApprove.main({
-      address: listBusinessAppointmenAddress,
+      address: listBusinessApplyAddress,
       approve: employeeControllerAddress,
     });
 
@@ -111,7 +111,7 @@ async function main() {
     });
 
     await ListBusinessApplyApprove.main({
-      address: listBusinessAppointmenAddress,
+      address: listBusinessApplyAddress,
       approve: businessControllerAddress,
     });
 
