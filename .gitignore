@@ -129,5 +129,5 @@ dist
 
 cache
 artifacts
-.deps
-**/artifacts/*
+.deps/*
+*/**/artifacts/**/*
