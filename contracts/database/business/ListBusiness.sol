@@ -32,7 +32,7 @@ contract ListBusiness is Permission {
         for (uint256 i = 0; i < list.length; i++) {
             if (list[i].user == value) return list[i].id;
         }
-        return 0;
+        return type(uint256).max;
     }
 
     function getAll() public view returns (Profile[] memory) {

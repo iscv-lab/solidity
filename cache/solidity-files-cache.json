@@ -148,6 +148,7 @@
         "CVController"
       ]
     },
+<<<<<<< HEAD
     "/Users/khanhle/Documents/work/iscv/solidity/contracts/cursor/employee/cv/ListEmployeeCVCursor.sol": {
       "lastModificationDate": 1673448583849,
       "contentHash": "24baf7a9aa1210d6730b0ccff851d233",
@@ -188,6 +189,11 @@
     "/Users/khanhle/Documents/work/iscv/solidity/contracts/cursor/employee/ListEmployeeCursor.sol": {
       "lastModificationDate": 1673455576216,
       "contentHash": "badb84d6fa1ede7ad6e322b76f24ae8d",
+=======
+    "/Users/khanhle/Documents/GitHub/solidity/contracts/cursor/employee/ListEmployeeCursor.sol": {
+      "lastModificationDate": 1675846123072,
+      "contentHash": "ae2d339dd6afffe2a9048cc8ca5f6c65",
+>>>>>>> 333dcf7077e572976dcacf717bfae53cd69ac386
       "sourceName": "contracts/cursor/employee/ListEmployeeCursor.sol",
       "solcConfig": {
         "version": "0.8.17",
@@ -922,8 +928,458 @@
         "ListBusinessAppointment"
       ]
     },
+<<<<<<< HEAD
     "/Users/khanhle/Documents/work/iscv/solidity/contracts/controller/business/BusinessController.sol": {
       "lastModificationDate": 1673448582900,
+=======
+    "/Users/khanhle/Documents/GitHub/solidity/contracts/controller/business/iig/IIGController.sol": {
+      "lastModificationDate": 1675664073340,
+      "contentHash": "e000e9e66eb4a57cf71926da8d1a7e37",
+      "sourceName": "contracts/controller/business/iig/IIGController.sol",
+      "solcConfig": {
+        "version": "0.8.17",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../../abstract/Ownable.sol",
+        "../../../cursor/business/iig/ListIIGRequestCursor.sol",
+        "../../../cursor/business/ListBusinessCursor.sol",
+        "../../../cursor/employee/ListEmployeeCursor.sol",
+        "../../../struct/business/iig/IIGRequestStruct.sol",
+        "../../../struct/business/iig/IIGResultStruct.sol",
+        "../../../cursor/business/iig/ListIIGLRResultCursor.sol",
+        "../../../cursor/business/iig/ListIIGSWResultCursor.sol"
+      ],
+      "versionPragmas": [
+        ">=0.4.22 <0.9.0"
+      ],
+      "artifacts": [
+        "IIGController"
+      ]
+    },
+    "/Users/khanhle/Documents/GitHub/solidity/contracts/cursor/business/iig/ListIIGRequestCursor.sol": {
+      "lastModificationDate": 1675664073880,
+      "contentHash": "2ff5265e0e7a2abbbac99c9860d77cb6",
+      "sourceName": "contracts/cursor/business/iig/ListIIGRequestCursor.sol",
+      "solcConfig": {
+        "version": "0.8.17",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../../database/business/igg/ListIIGRequest.sol",
+        "../../../struct/business/iig/IIGRequestStruct.sol"
+      ],
+      "versionPragmas": [
+        ">=0.8.12 <0.9.0"
+      ],
+      "artifacts": [
+        "ListIIGRequestCursor"
+      ]
+    },
+    "/Users/khanhle/Documents/GitHub/solidity/contracts/cursor/business/ListBusinessCursor.sol": {
+      "lastModificationDate": 1675846149825,
+      "contentHash": "9ec5b2d51f1fd90b99a12d7d3c1b2f48",
+      "sourceName": "contracts/cursor/business/ListBusinessCursor.sol",
+      "solcConfig": {
+        "version": "0.8.17",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../database/business/ListBusiness.sol",
+        "../../struct/business/BusinessStruct.sol"
+      ],
+      "versionPragmas": [
+        ">=0.8.12 <0.9.0"
+      ],
+      "artifacts": [
+        "ListBusinessCursor"
+      ]
+    },
+    "/Users/khanhle/Documents/GitHub/solidity/contracts/struct/business/iig/IIGRequestStruct.sol": {
+      "lastModificationDate": 1675664074249,
+      "contentHash": "bb1a8c289154f835971037df0ea5d21c",
+      "sourceName": "contracts/struct/business/iig/IIGRequestStruct.sol",
+      "solcConfig": {
+        "version": "0.8.17",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.8.14 <0.9.0"
+      ],
+      "artifacts": []
+    },
+    "/Users/khanhle/Documents/GitHub/solidity/contracts/struct/business/iig/IIGResultStruct.sol": {
+      "lastModificationDate": 1675664074249,
+      "contentHash": "f04128ac547d2e810a3192c59519959f",
+      "sourceName": "contracts/struct/business/iig/IIGResultStruct.sol",
+      "solcConfig": {
+        "version": "0.8.17",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.8.14 <0.9.0"
+      ],
+      "artifacts": []
+    },
+    "/Users/khanhle/Documents/GitHub/solidity/contracts/cursor/business/iig/ListIIGLRResultCursor.sol": {
+      "lastModificationDate": 1675664073880,
+      "contentHash": "a7081bceec37c4bd1baffcdd384f9831",
+      "sourceName": "contracts/cursor/business/iig/ListIIGLRResultCursor.sol",
+      "solcConfig": {
+        "version": "0.8.17",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../../database/business/igg/ListIIGLRResult.sol"
+      ],
+      "versionPragmas": [
+        ">=0.8.12 <0.9.0"
+      ],
+      "artifacts": [
+        "ListIIGLRResultCursor"
+      ]
+    },
+    "/Users/khanhle/Documents/GitHub/solidity/contracts/cursor/business/iig/ListIIGSWResultCursor.sol": {
+      "lastModificationDate": 1675664073880,
+      "contentHash": "369eabb9e44dd86a358567e125ab53c9",
+      "sourceName": "contracts/cursor/business/iig/ListIIGSWResultCursor.sol",
+      "solcConfig": {
+        "version": "0.8.17",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../../database/business/igg/ListIIGSWResult.sol"
+      ],
+      "versionPragmas": [
+        ">=0.8.12 <0.9.0"
+      ],
+      "artifacts": [
+        "ListIIGSWResultCursor"
+      ]
+    },
+    "/Users/khanhle/Documents/GitHub/solidity/contracts/database/business/igg/ListIIGRequest.sol": {
+      "lastModificationDate": 1675664074147,
+      "contentHash": "f63279d3bd583877a2e6be54b1628a63",
+      "sourceName": "contracts/database/business/igg/ListIIGRequest.sol",
+      "solcConfig": {
+        "version": "0.8.17",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../../abstract/Permission.sol",
+        "../../../struct/business/iig/IIGRequestStruct.sol"
+      ],
+      "versionPragmas": [
+        ">=0.8.12 <0.9.0"
+      ],
+      "artifacts": [
+        "ListIIGRequest"
+      ]
+    },
+    "/Users/khanhle/Documents/GitHub/solidity/contracts/database/business/ListBusiness.sol": {
+      "lastModificationDate": 1675846300504,
+      "contentHash": "c76f47280c52378847d7dad8474afd46",
+      "sourceName": "contracts/database/business/ListBusiness.sol",
+      "solcConfig": {
+        "version": "0.8.17",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../abstract/Permission.sol",
+        "../../struct/business/BusinessStruct.sol"
+      ],
+      "versionPragmas": [
+        ">=0.8.12 <0.9.0"
+      ],
+      "artifacts": [
+        "ListBusiness"
+      ]
+    },
+    "/Users/khanhle/Documents/GitHub/solidity/contracts/struct/business/BusinessStruct.sol": {
+      "lastModificationDate": 1675664074249,
+      "contentHash": "99a98e02fddd68042a513cad52407798",
+      "sourceName": "contracts/struct/business/BusinessStruct.sol",
+      "solcConfig": {
+        "version": "0.8.17",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.8.14 <0.9.0"
+      ],
+      "artifacts": []
+    },
+    "/Users/khanhle/Documents/GitHub/solidity/contracts/database/business/igg/ListIIGLRResult.sol": {
+      "lastModificationDate": 1675664074147,
+      "contentHash": "42175ec5e472b2917c8e363b3e1f8bad",
+      "sourceName": "contracts/database/business/igg/ListIIGLRResult.sol",
+      "solcConfig": {
+        "version": "0.8.17",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../../abstract/Permission.sol",
+        "../../../struct/business/iig/IIGResultStruct.sol"
+      ],
+      "versionPragmas": [
+        ">=0.8.12 <0.9.0"
+      ],
+      "artifacts": [
+        "ListIIGLRResult"
+      ]
+    },
+    "/Users/khanhle/Documents/GitHub/solidity/contracts/database/business/igg/ListIIGSWResult.sol": {
+      "lastModificationDate": 1675664074147,
+      "contentHash": "e46110d4bc5019ba8284628b4798ce2d",
+      "sourceName": "contracts/database/business/igg/ListIIGSWResult.sol",
+      "solcConfig": {
+        "version": "0.8.17",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../../abstract/Permission.sol",
+        "../../../struct/business/iig/IIGResultStruct.sol"
+      ],
+      "versionPragmas": [
+        ">=0.8.12 <0.9.0"
+      ],
+      "artifacts": [
+        "ListIIGSWResult"
+      ]
+    },
+    "/Users/khanhle/Documents/GitHub/solidity/contracts/controller/business/BusinessController.sol": {
+      "lastModificationDate": 1675664073304,
+>>>>>>> 333dcf7077e572976dcacf717bfae53cd69ac386
       "contentHash": "ba81a845a9a33fc3313dd443e538edab",
       "sourceName": "contracts/controller/business/BusinessController.sol",
       "solcConfig": {
