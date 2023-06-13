@@ -3,7 +3,7 @@ pragma solidity >=0.8.12 <0.9.0;
 
 import {Permission} from "../../abstract/Permission.sol";
 
-import {Profile} from "../../struct/business/BusinessStruct.sol";
+import {Profile, EBusinessCategory} from "../../struct/business/BusinessStruct.sol";
 
 contract ListBusiness is Permission {
     Profile[] public list;
@@ -46,7 +46,6 @@ contract ListBusiness is Permission {
         return
             Profile(
                 type(uint256).max,
-                type(uint256).max,
                 address(0),
                 "",
                 "",
@@ -54,14 +53,12 @@ contract ListBusiness is Permission {
                 "",
                 "",
                 "",
-                ""
+                "",
+                EBusinessCategory.NULL
             );
     }
 
     // setter //////////////////////////////////////////////////////////////////////////
-    function setCategory(uint256 index, uint256 value) public onlyApproved {
-        list[index].category = value;
-    }
 
     function setId(uint256 index, uint256 value) public onlyApproved {
         list[index].id = value;

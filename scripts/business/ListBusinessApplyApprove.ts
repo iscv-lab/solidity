@@ -8,7 +8,7 @@ export async function main(props: { address: string; approve: string }) {
     "ListBusinessApply"
   );
   const listBusinessApply = ListBusinessApply.attach(address);
-  listBusinessApply.approve(approve, { from: deployer.address });
+  await listBusinessApply.approve(approve, { from: deployer.address });
   //   console.log("Token address:", (await listEmployee.owner()).toString());
 }
 

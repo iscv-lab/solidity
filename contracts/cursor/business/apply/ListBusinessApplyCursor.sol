@@ -11,9 +11,9 @@ abstract contract ListBusinessApplyCursor {
         listBusinessApplyCursor = ListBusinessApply(value);
     }
 
-    modifier hadApplied(uint256 id, uint256 employeeId) {
+    modifier hadApplied(uint256 employeeId, string memory postId) {
         require(
-            !_checkExistApply(id, employeeId),
+            !_checkExistApply(employeeId, postId),
             "ListBusinessApplyCursor: had applied"
         );
         _;
@@ -26,7 +26,7 @@ abstract contract ListBusinessApplyCursor {
         );
         _;
     }
-    modifier onlyApplyIdBelongsToPostId(uint256 id, uint256 postId) {
+    modifier onlyApplyIdBelongsToPostId(uint256 id, string memory postId) {
         require(
             _checkIdBelongsToPostId(id, postId),
             "ListBusinessApplyCursor: apply id not belongs to post id"
@@ -36,23 +36,26 @@ abstract contract ListBusinessApplyCursor {
 
     function _checkExistApply(
         uint256 employeeId,
-        uint256 postId
+        string memory postId
     ) public view returns (bool) {
         BusinessApply[] memory list = listBusinessApplyCursor.getAll();
         for (uint256 i = 0; i < list.length; i++) {
             BusinessApply memory item = list[i];
-            if (item.employeeId == employeeId && item.postId == postId)
-                return true;
+            if (
+                item.employeeId == employeeId &&
+                keccak256(bytes(item.postId)) == keccak256(bytes(postId))
+            ) return true;
         }
         return false;
     }
 
     function _checkIdBelongsToPostId(
         uint256 id,
-        uint256 postId
+        string memory postId
     ) public view returns (bool) {
-        uint256 checkPostId = listBusinessApplyCursor.at(id).postId;
-        if (postId == checkPostId) return true;
+        string memory checkPostId = listBusinessApplyCursor.at(id).postId;
+        if (keccak256(bytes(postId)) == keccak256(bytes(checkPostId)))
+            return true;
         return false;
     }
 

@@ -7,41 +7,33 @@ import {ListEmployeeCursor} from "../../cursor/employee/ListEmployeeCursor.sol";
 import {Profile} from "../../struct/employee/EmployeeStruct.sol";
 
 import {StringTool} from "../../library/StringTool.sol";
-import {BusinessPost, BusinessPostStatus} from "../../struct/business/post/BusinessPostStruct.sol";
 
 import {BusinessApply} from "../../struct/business/apply/BusinessApplyStruct.sol";
 import {ListEmployeeSkillCursor} from "../../cursor/employee/ListEmployeeSkillCursor.sol";
 import {EmployeeSkill} from "../../struct/employee/EmployeeSkillStruct.sol";
-import {ListBusinessPostCursor} from "../../cursor/business/post/ListBusinessPostCursor.sol";
 import {ListBusinessApplyCursor} from "../../cursor/business/apply/ListBusinessApplyCursor.sol";
-import {ListBusinessAppointmenCursor} from "../../cursor/business/apply/ListBusinessAppointmenCursor.sol";
-import {BusinessAppointment} from "../../struct/business/apply/BusinessAppointmentStruct.sol";
 
 contract EmployeeController is
     Ownable,
     ListEmployeeCursor,
     ListEmployeeSkillCursor,
-    ListBusinessApplyCursor,
-    ListBusinessAppointmenCursor
+    ListBusinessApplyCursor
 {
     constructor(
         address listEmployeeAddress,
         address listEmployeeSkillAddress,
-        address listEmployeeApplyAddress,
-        address listEmployeeAppointmenAddress
+        address listEmployeeApplyAddress
     )
         Ownable()
         ListEmployeeCursor(listEmployeeAddress)
         ListEmployeeSkillCursor(listEmployeeSkillAddress)
         ListBusinessApplyCursor(listEmployeeApplyAddress)
-        ListBusinessAppointmenCursor(listEmployeeAppointmenAddress)
     {}
 
     using StringTool for string;
 
     // Chức năng thêm thông tin doanh nghiệp
     function addEmployee(
-        uint256 category,
         string memory name,
         string memory phone,
         string memory professional,
@@ -52,7 +44,6 @@ contract EmployeeController is
     ) public notExistEmployeeAccount {
         address user = msg.sender;
         Profile memory item = Profile(
-            category,
             0,
             user,
             name,
@@ -101,6 +92,10 @@ contract EmployeeController is
         return _getListEmployeeCursor().getAll();
     }
 
+    function getProfile(uint256 id) public view returns (Profile memory) {
+        return _getListEmployeeCursor().at(id);
+    }
+
     // Các chức năng kĩ năng
 
     function addSkill(
@@ -127,7 +122,7 @@ contract EmployeeController is
     function applyPost(
         uint256 employeeId,
         uint256 businessId,
-        uint256 postId
+        string memory postId
     ) public onlyIdBelongstoAddress(employeeId) hadApplied(employeeId, postId) {
         BusinessApply memory item = BusinessApply(
             0,
@@ -138,5 +133,9 @@ contract EmployeeController is
             0
         );
         _getListBusinessApplyCursor().add(item);
+    }
+
+    function getListAppliesPost() public view returns (BusinessApply[] memory) {
+        return _getListBusinessApplyCursor().getAll();
     }
 }

@@ -28,9 +28,6 @@ contract ListIIGSWResult is Permission {
     }
 
     // setter //////////////////////////////////////////////////////////////////////////
-    function setBusinessId(uint256 index, uint256 value) public onlyApproved {
-        list[index].businessId = value;
-    }
 
     function setEmployeeId(uint256 index, uint256 value) public onlyApproved {
         list[index].employeeId = value;
@@ -40,10 +37,10 @@ contract ListIIGSWResult is Permission {
         list[index].testDate = value;
     }
 
-    function setShiftTest(uint256 index, IIGShiftTest value)
-        public
-        onlyApproved
-    {
+    function setShiftTest(
+        uint256 index,
+        IIGShiftTest value
+    ) public onlyApproved {
         list[index].shiftTest = value;
     }
 
@@ -51,10 +48,10 @@ contract ListIIGSWResult is Permission {
         list[index].expireDate = value;
     }
 
-    function setSpeakingScore(uint256 index, uint256 value)
-        public
-        onlyApproved
-    {
+    function setSpeakingScore(
+        uint256 index,
+        uint256 value
+    ) public onlyApproved {
         list[index].speakingScore = value;
     }
 
@@ -64,7 +61,6 @@ contract ListIIGSWResult is Permission {
 
     function setRequest(
         uint256 index,
-        uint256 businessId,
         uint256 employeeId,
         uint256 testDate,
         IIGShiftTest shiftTest,
@@ -72,7 +68,6 @@ contract ListIIGSWResult is Permission {
         uint256 speakingScore,
         uint256 writingScore
     ) public onlyApproved {
-        list[index].businessId = businessId;
         list[index].employeeId = employeeId;
         list[index].testDate = testDate;
         list[index].shiftTest = shiftTest;

@@ -21,12 +21,13 @@ contract ListEmployeeCV is Permission {
         emit Add(item);
     }
 
-    function at(uint256 index)
-        public
-        view
-        onlyApproved
-        returns (EmployeeCV memory)
-    {
+    function at(
+        uint256 index
+    ) public view onlyApproved returns (EmployeeCV memory) {
         return list[index];
+    }
+
+    function getAll() public view returns (EmployeeCV[] memory) {
+        return list;
     }
 }

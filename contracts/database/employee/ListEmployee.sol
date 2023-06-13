@@ -24,12 +24,9 @@ contract ListEmployee is Permission {
         return list;
     }
 
-    function at(uint256 index)
-        public
-        view
-        onlyApproved
-        returns (Profile memory)
-    {
+    function at(
+        uint256 index
+    ) public view onlyApproved returns (Profile memory) {
         return list[index];
     }
 
@@ -45,24 +42,10 @@ contract ListEmployee is Permission {
             if (list[i].user == value) return list[i];
         }
         return
-            Profile(
-                type(uint256).max,
-                type(uint256).max,
-                address(0),
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                ""
-            );
+            Profile(type(uint256).max, address(0), "", "", "", "", "", "", "");
     }
 
     // setter //////////////////////////////////////////////////////////////////////////
-    function setCategory(uint256 index, uint256 value) public onlyApproved {
-        list[index].category = value;
-    }
 
     function setId(uint256 index, uint256 value) public onlyApproved {
         list[index].id = value;
@@ -80,10 +63,10 @@ contract ListEmployee is Permission {
         list[index].phone = value;
     }
 
-    function setProfessional(uint256 index, string memory value)
-        public
-        onlyApproved
-    {
+    function setProfessional(
+        uint256 index,
+        string memory value
+    ) public onlyApproved {
         list[index].professional = value;
     }
 
@@ -95,17 +78,17 @@ contract ListEmployee is Permission {
         list[index].github = value;
     }
 
-    function setLinkedin(uint256 index, string memory value)
-        public
-        onlyApproved
-    {
+    function setLinkedin(
+        uint256 index,
+        string memory value
+    ) public onlyApproved {
         list[index].linkedin = value;
     }
 
-    function setSourceImage(uint256 index, string memory value)
-        public
-        onlyApproved
-    {
+    function setSourceImage(
+        uint256 index,
+        string memory value
+    ) public onlyApproved {
         list[index].sourceImage = value;
     }
 }

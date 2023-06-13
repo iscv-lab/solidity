@@ -1,16 +1,35 @@
 import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
+import dotenv from "dotenv";
+
+dotenv.config({
+  path: ".env",
+});
 
 const config: HardhatUserConfig = {
-  solidity: "0.8.17",
+  solidity: {
+    version: "0.8.17",
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 200,
+      },
+    },
+  },
   networks: {
     iscv: {
-      url: `https://ganache.ftisu.vn/`,
+      url: `http://54.169.170.240:8545`,
       accounts: [
-        "0db507968e1901d170f37bd2e37a59e77584f07e4ab92548abb3af95dac340d5",
+        "8eddd4b3a701447cfd338917f6183302d6e592eb3c6e1428a3404d01537be894",
       ],
     },
-    hardhat: {
+    hardhat: {},
+    ganache: {
+      url: "http://0.0.0.0:7545",
+    },
+    polygon: {
+      url: "https://matic-mumbai.chainstacklabs.com",
+      accounts: [process.env.POLYGON_PRIVATE_KEY!],
     },
   },
 };

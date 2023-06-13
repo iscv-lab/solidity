@@ -1,20 +1,29 @@
-import { ethers } from "hardhat";
-import * as ListBusinessApply from "./business/ListBusinessApply";
-import * as ListEmployee from "./employee/ListEmployee";
-import * as ListBusiness from "./business/ListBusiness";
-import * as ListEmployeeSkill from "./employee/ListEmployeeSkill";
-import * as ListBusinessAppointment from "./business/ListBusinessAppointment";
-import * as EmployeeController from "./employee/EmployeeController";
-import * as BusinessController from "./business/BusinessController";
 import * as fs from "fs";
+import { ethers } from "hardhat";
 import * as path from "path";
-import * as ListEmployeeSkillApprove from "./employee/ListEmployeeSkillApprove";
-import * as ListEmployeeApprove from "./employee/ListEmployeeApprove";
+import * as BusinessController from "./business/BusinessController";
+import * as ListBusiness from "./business/ListBusiness";
+import * as ListBusinessApply from "./business/ListBusinessApply";
 import * as ListBusinessApprove from "./business/ListBusinessApprove";
-import * as ListBusinessAppointmentApprove from "./business/ListBusinessAppointmentApprove";
+import * as IIGController from "./business/iig/IIGController";
+import * as IIGData from "./business/iig/IIGData";
+import * as ListIIGLRResult from "./business/iig/ListIIGLRResult";
+import * as ListIIGSWResult from "./business/iig/ListIIGSWResult";
+import * as EmployeeCVController from "./employee/EmployeeCVController";
+import * as EmployeeController from "./employee/EmployeeController";
+import * as ListEmployee from "./employee/ListEmployee";
+import * as ListEmployeeApprove from "./employee/ListEmployeeApprove";
+import * as ListEmployeeCV from "./employee/ListEmployeeCV";
+import * as ListEmployeeCVApprove from "./employee/ListEmployeeCVApprove";
+import * as ListEmployeeSkill from "./employee/ListEmployeeSkill";
+import * as ListEmployeeSkillApprove from "./employee/ListEmployeeSkillApprove";
+
+import * as IIGDataApprove from "./business/iig/IIGDataApprove";
+import * as ListIIGLRResultApprove from "./business/iig/ListIIGLRResultApprove";
+import * as ListIIGSWResultApprove from "./business/iig/ListIIGLRResultApprove";
+
 import * as ListBusinessApplyApprove from "./business/ListBusinessApplyApprove";
-import * as ListBusinessPost from "./business/ListBusinessPost";
-import * as ListBusinessPostApprove from "./business/ListBusinessPostApprove";
+
 const logFile = fs.createWriteStream(path.join("./debug.log"), {
   flags: "a",
 });
@@ -28,30 +37,31 @@ async function main() {
     logger(`listEmployeeAddress: ${listEmployeeAddress}`);
     const listEmployeeSkillAddress = await ListEmployeeSkill.main();
     logger(`listEmployeeSkillAddress: ${listEmployeeSkillAddress}`);
+    const listEmployeeCVAddress = await ListEmployeeCV.main();
+    logger(`listEmployeeCVAddress: ${listEmployeeCVAddress}`);
 
     // business
     const listBusinessAddress = await ListBusiness.main();
     logger(`listBusinessAddress: ${listBusinessAddress}`);
     const listBusinessApplyAddress = await ListBusinessApply.main();
     logger(`listBusinessApplyAddress: ${listBusinessApplyAddress}`);
-    const listBusinessPostAddress = await ListBusinessPost.main();
-    logger(`listBusinessPostAddress: ${listBusinessPostAddress}`);
-    const listBusinessAppointmenAddress = await ListBusinessAppointment.main();
-    logger(`listBusinessAppointmenAddress: ${listBusinessAppointmenAddress}`);
 
     // controller
     const employeeControllerAddress = await EmployeeController.main({
       listBusinessApplyAddress,
       listEmployeeAddress,
       listEmployeeSkillAddress,
-      listBusinessAppointmenAddress,
     });
     logger(`employeeControllerAddress: ${employeeControllerAddress}`);
+    const employeeCVController = await EmployeeCVController.main({
+      listEmployeeAddress,
+      listEmployeeCVAddress,
+    });
+    logger(`employeeCVController: ${employeeCVController}`);
+
     const businessControllerAddress = await BusinessController.main({
       listBusinessAddress: listBusinessAddress,
       listBusinessApplyAddress: listBusinessApplyAddress,
-      listBusinessAppointmenAddress: listBusinessAppointmenAddress,
-      listBusinessPostAddress: listBusinessPostAddress,
     });
     logger(`businessControllerAddress: ${businessControllerAddress}`);
 
@@ -68,10 +78,6 @@ async function main() {
     });
 
     // /business
-    await ListBusinessAppointmentApprove.main({
-      address: listBusinessAppointmenAddress,
-      approve: employeeControllerAddress,
-    });
 
     await ListBusinessApprove.main({
       address: listBusinessAddress,
@@ -80,11 +86,6 @@ async function main() {
 
     await ListBusinessApplyApprove.main({
       address: listBusinessApplyAddress,
-      approve: employeeControllerAddress,
-    });
-
-    await ListBusinessPostApprove.main({
-      address: listBusinessPostAddress,
       approve: employeeControllerAddress,
     });
 
@@ -99,11 +100,17 @@ async function main() {
       approve: businessControllerAddress,
     });
 
-    // /business
-    await ListBusinessAppointmentApprove.main({
-      address: listBusinessAppointmenAddress,
-      approve: businessControllerAddress,
+    await ListEmployeeCVApprove.main({
+      address: listEmployeeCVAddress,
+      approve: employeeCVController,
     });
+
+    await ListEmployeeApprove.main({
+      address: listEmployeeAddress,
+      approve: employeeCVController,
+    });
+
+    // /business
 
     await ListBusinessApprove.main({
       address: listBusinessAddress,
@@ -115,9 +122,63 @@ async function main() {
       approve: businessControllerAddress,
     });
 
-    await ListBusinessPostApprove.main({
-      address: listBusinessPostAddress,
-      approve: businessControllerAddress,
+    // iig
+
+    const iigDataAddress = await IIGData.main();
+    logger(`iigDataAddress: ${iigDataAddress}`);
+    const listIIGLRResultAddress = await ListIIGLRResult.main();
+    logger(`listIIGLRResultAddress: ${listIIGLRResultAddress}`);
+    const listIIGSWResultAddress = await ListIIGSWResult.main();
+    logger(`listIIGSWResultAddress: ${listIIGSWResultAddress}`);
+    const iigControllerAddress = await IIGController.main({
+      listBusinessAddress,
+      listEmployeeAddress,
+      listIIGLRResultAddress,
+      listIIGSWResultAddress,
+      iigDataAddress,
+      iigAccountAddress: deployer.address,
+    });
+    logger(`iigControllerAddress: ${iigControllerAddress}`);
+
+    await ListBusinessApprove.main({
+      address: listBusinessAddress,
+      approve: iigControllerAddress,
+    });
+    await ListEmployeeApprove.main({
+      address: listEmployeeAddress,
+      approve: iigControllerAddress,
+    });
+    await IIGDataApprove.main({
+      address: iigDataAddress,
+      approve: iigControllerAddress,
+    });
+    await IIGDataApprove.main({
+      address: deployer.address,
+      approve: iigControllerAddress,
+    });
+    await ListIIGLRResultApprove.main({
+      address: listIIGLRResultAddress,
+      approve: iigControllerAddress,
+    });
+    await ListIIGSWResultApprove.main({
+      address: listIIGSWResultAddress,
+      approve: iigControllerAddress,
+    });
+
+    await IIGData.setAccount({
+      iigDataAddress,
+      iigAccountAddress: deployer.address,
+    });
+
+    // create iig
+    await ListBusinessApprove.main({
+      address: listBusinessAddress,
+      approve: deployer.address,
+    });
+
+    await BusinessController.addIIGProfile({
+      address: listBusinessAddress,
+      iigAccountAddress: deployer.address,
     });
   } catch (error) {
     console.error(error);

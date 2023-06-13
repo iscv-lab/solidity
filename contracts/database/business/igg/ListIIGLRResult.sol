@@ -28,9 +28,7 @@ contract ListIIGLRResult is Permission {
     }
 
     // setter //////////////////////////////////////////////////////////////////////////
-    function setBusinessId(uint256 index, uint256 value) public onlyApproved {
-        list[index].businessId = value;
-    }
+
 
     function setEmployeeId(uint256 index, uint256 value) public onlyApproved {
         list[index].employeeId = value;
@@ -64,7 +62,6 @@ contract ListIIGLRResult is Permission {
 
     function setRequest(
         uint256 index,
-        uint256 businessId,
         uint256 employeeId,
         uint256 testDate,
         IIGShiftTest shiftTest,
@@ -72,7 +69,6 @@ contract ListIIGLRResult is Permission {
         uint256 listeningScore,
         uint256 readingScore
     ) public onlyApproved {
-        list[index].businessId = businessId;
         list[index].employeeId = employeeId;
         list[index].testDate = testDate;
         list[index].shiftTest = shiftTest;

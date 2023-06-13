@@ -10,7 +10,6 @@ enum IIGShiftTest {
 }
 struct IIGLRResult {
     uint256 id;
-    uint256 businessId;
     uint256 employeeId;
     uint256 testDate;
     IIGShiftTest shiftTest;
@@ -21,7 +20,6 @@ struct IIGLRResult {
 }
 struct IIGSWResult {
     uint256 id;
-    uint256 businessId;
     uint256 employeeId;
     uint256 testDate;
     IIGShiftTest shiftTest;

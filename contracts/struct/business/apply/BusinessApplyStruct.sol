@@ -5,7 +5,7 @@ struct BusinessApply {
     uint256 id;
     uint256 employeeId;
     uint256 businessId;
-    uint256 postId;
+    string postId;
     uint256 time;
     uint256 status;
 }
