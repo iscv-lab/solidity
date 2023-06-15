@@ -114,7 +114,8 @@ contract EmployeeController is
 
     function startStartSession(
         uint256 employeeId
-    ) public onlyIdBelongstoAddress(employeeId) onlyDiffSevenDays(employeeId) {
+    ) public onlyIdBelongstoAddress(employeeId) // onlyDiffSevenDays(employeeId)
+    {
         BigFive memory item = BigFive(0, employeeId, block.timestamp, "");
         _getListBigFiveCursor().add(item);
     }
@@ -122,7 +123,11 @@ contract EmployeeController is
     function addBigFive(
         uint256 employeeId,
         string memory cid
-    ) public onlyIdBelongstoAddress(employeeId) onlyDiffSevenDays(employeeId) {
+    )
+        public
+        onlyIdBelongstoAddress(employeeId)
+    //  onlyDiffSevenDays(employeeId)
+    {
         BigFive memory item = BigFive(0, employeeId, block.timestamp, cid);
         _getListBigFiveCursor().add(item);
         emit AddBigFive(employeeId, cid);
