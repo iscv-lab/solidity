@@ -6,6 +6,7 @@ export async function main(props: {
   listEmployeeAddress: string;
   listEmployeeSkillAddress: string;
   listBusinessApplyAddress: string;
+  listBigFiveAddress: string;
 }) {
   const EmployeeController = await ethers.getContractFactory(
     "EmployeeController"
@@ -14,11 +15,13 @@ export async function main(props: {
     listEmployeeAddress,
     listEmployeeSkillAddress,
     listBusinessApplyAddress,
+    listBigFiveAddress,
   } = props;
   const employeeController = await EmployeeController.deploy(
     listEmployeeAddress,
     listEmployeeSkillAddress,
     listBusinessApplyAddress,
+    listBigFiveAddress
   );
   return employeeController.address;
 }

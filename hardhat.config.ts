@@ -18,14 +18,10 @@ const config: HardhatUserConfig = {
   },
   networks: {
     iscv: {
-      url: `http://54.169.170.240:8545`,
+      url: `http://103.151.241.28:8545`,
       accounts: [
         "8eddd4b3a701447cfd338917f6183302d6e592eb3c6e1428a3404d01537be894",
       ],
-    },
-    hardhat: {},
-    ganache: {
-      url: "http://0.0.0.0:7545",
     },
     polygon: {
       url: "https://matic-mumbai.chainstacklabs.com",

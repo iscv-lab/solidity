@@ -2,20 +2,20 @@
 pragma solidity >=0.8.17 <0.9.0;
 
 import {Permission} from "../../../abstract/Permission.sol";
-import {EmployeeCV} from "../../../struct/employee/cv/EmployeeCVStruct.sol";
+import {BigFive} from "../../../struct/employee/bigfive/BigFiveStruct.sol";
 import {StringTool} from "../../../library/StringTool.sol";
 
-contract ListEmployeeCV is Permission {
+contract ListBigFive is Permission {
     using StringTool for string;
 
-    EmployeeCV[] public list;
+    BigFive[] public list;
 
     constructor() Permission() {}
 
-    event Add(EmployeeCV item);
-    event Remove(EmployeeCV item);
+    event Add(BigFive item);
+    event Remove(BigFive item);
 
-    function add(EmployeeCV memory item) public onlyApproved {
+    function add(BigFive memory item) public onlyApproved {
         item.id = list.length;
         list.push(item);
         emit Add(item);
@@ -23,11 +23,11 @@ contract ListEmployeeCV is Permission {
 
     function at(
         uint256 index
-    ) public view onlyApproved returns (EmployeeCV memory) {
+    ) public view onlyApproved returns (BigFive memory) {
         return list[index];
     }
 
-    function getAll() public view returns (EmployeeCV[] memory) {
+    function getAll() public view returns (BigFive[] memory) {
         return list;
     }
 }

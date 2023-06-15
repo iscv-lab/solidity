@@ -17,12 +17,12 @@ import * as ListEmployeeCV from "./employee/ListEmployeeCV";
 import * as ListEmployeeCVApprove from "./employee/ListEmployeeCVApprove";
 import * as ListEmployeeSkill from "./employee/ListEmployeeSkill";
 import * as ListEmployeeSkillApprove from "./employee/ListEmployeeSkillApprove";
-
 import * as IIGDataApprove from "./business/iig/IIGDataApprove";
 import * as ListIIGLRResultApprove from "./business/iig/ListIIGLRResultApprove";
 import * as ListIIGSWResultApprove from "./business/iig/ListIIGLRResultApprove";
-
 import * as ListBusinessApplyApprove from "./business/ListBusinessApplyApprove";
+import * as ListBigFive from "./employee/ListBigFive";
+import * as ListBigFiveApprove from "./employee/ListBigFiveApprove";
 
 const logFile = fs.createWriteStream(path.join("./debug.log"), {
   flags: "a",
@@ -46,11 +46,15 @@ async function main() {
     const listBusinessApplyAddress = await ListBusinessApply.main();
     logger(`listBusinessApplyAddress: ${listBusinessApplyAddress}`);
 
+    const listBigFiveAddress = await ListBigFive.main();
+    logger(`listBigFiveAddress: ${listBigFiveAddress}`);
+
     // controller
     const employeeControllerAddress = await EmployeeController.main({
       listBusinessApplyAddress,
       listEmployeeAddress,
       listEmployeeSkillAddress,
+      listBigFiveAddress,
     });
     logger(`employeeControllerAddress: ${employeeControllerAddress}`);
     const employeeCVController = await EmployeeCVController.main({
@@ -179,6 +183,13 @@ async function main() {
     await BusinessController.addIIGProfile({
       address: listBusinessAddress,
       iigAccountAddress: deployer.address,
+    });
+
+    // bigfive
+
+    await ListBigFiveApprove.main({
+      address: listBigFiveAddress,
+      approve: employeeControllerAddress,
     });
   } catch (error) {
     console.error(error);
