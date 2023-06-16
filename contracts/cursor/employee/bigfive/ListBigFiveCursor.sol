@@ -13,13 +13,47 @@ abstract contract ListBigFiveCursor {
         listBigFiveCursor = ListBigFive(value);
     }
 
-    event AddBigFive(uint256 employeeId, string cid);
+    event AddBigFive(uint256 employeeId, uint256 sessionId, string cid);
     modifier onlyDiffSevenDays(uint256 employeeId) {
         require(
             isDiffSevenDays(employeeId),
             "ListBigFiveCursor:  not different 7 days"
         );
         _;
+    }
+
+    modifier onlySessionIdBelongstoEmployeeId(
+        uint256 sessionId,
+        uint256 employeeId
+    ) {
+        require(
+            _checkSessionIdBelongstoEmployeeId(sessionId, employeeId),
+            "ListBigFiveCursor: id is not belongs to address"
+        );
+        _;
+    }
+
+    modifier onlyApproveOneTime(uint256 sessionId) {
+        require(
+            _checkApproveTime(sessionId),
+            "ListBigFiveCursor: only approve one time"
+        );
+        _;
+    }
+
+    function _checkApproveTime(uint256 sessionId) internal view returns (bool) {
+        BigFive memory bigfive = listBigFiveCursor.at(sessionId);
+        if (bytes(bigfive.cid).length != 0) return false;
+        return true;
+    }
+
+    function _checkSessionIdBelongstoEmployeeId(
+        uint256 sessionId,
+        uint256 employeeId
+    ) internal view returns (bool) {
+        uint256 validateEmployeeId = listBigFiveCursor.at(sessionId).employeeId;
+        if (validateEmployeeId == employeeId) return true;
+        return false;
     }
 
     function isDiffSevenDays(uint256 employeeId) public view returns (bool) {
@@ -29,7 +63,7 @@ abstract contract ListBigFiveCursor {
             BigFive memory item = list[i];
             if (
                 employeeId == item.employeeId &&
-                current - item.time < SEVEN_DAYS
+                current - item.startTime < SEVEN_DAYS
             ) return false;
         }
         return true;

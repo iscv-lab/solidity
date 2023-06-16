@@ -14,6 +14,7 @@ contract ListBigFive is Permission {
 
     event Add(BigFive item);
     event Remove(BigFive item);
+    event Edit(BigFive item);
 
     function add(BigFive memory item) public onlyApproved {
         item.id = list.length;
@@ -29,5 +30,10 @@ contract ListBigFive is Permission {
 
     function getAll() public view returns (BigFive[] memory) {
         return list;
+    }
+
+    function edit(BigFive memory item) public onlyApproved {
+        list[item.id] = item;
+        emit Edit(item);
     }
 }

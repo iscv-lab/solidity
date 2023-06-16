@@ -114,26 +114,37 @@ contract EmployeeController is
 
     function startStartSession(
         uint256 employeeId
-    ) public onlyIdBelongstoAddress(employeeId) // onlyDiffSevenDays(employeeId)
+    )
+        public
+        onlyIdBelongstoAddress(employeeId) // onlyDiffSevenDays(employeeId)
     {
-        BigFive memory item = BigFive(0, employeeId, block.timestamp, "");
+        BigFive memory item = BigFive(0, employeeId, block.timestamp, 0, "");
         _getListBigFiveCursor().add(item);
     }
 
     function addBigFive(
         uint256 employeeId,
+        uint256 sessionId,
         string memory cid
     )
         public
         onlyIdBelongstoAddress(employeeId)
+        onlySessionIdBelongstoEmployeeId(sessionId, employeeId)
+    // onlyApproveOneTime(sessionId)
     //  onlyDiffSevenDays(employeeId)
     {
-        BigFive memory item = BigFive(0, employeeId, block.timestamp, cid);
-        _getListBigFiveCursor().add(item);
-        emit AddBigFive(employeeId, cid);
+        BigFive memory item = _getListBigFiveCursor().at(sessionId);
+        item.endTime = block.timestamp;
+        item.cid = cid;
+        _getListBigFiveCursor().edit(item);
+        emit AddBigFive(employeeId, sessionId, cid);
     }
 
     function getBigFives() public view returns (BigFive[] memory) {
         return _getListBigFiveCursor().getAll();
+    }
+
+    function getBigFive(uint256 id) public view returns (BigFive memory) {
+        return _getListBigFiveCursor().at(id);
     }
 }
