@@ -76,7 +76,7 @@ contract EmployeeController is
         string memory title,
         uint256 level
     ) public onlyIdBelongstoAddress(id) notExistSkill(id, title) {
-        EmployeeSkill memory item = EmployeeSkill(id, 0, title, level);
+        EmployeeSkill memory item = EmployeeSkill(0, id, title, level);
         _getListEmployeeSkillCursor().add(item);
     }
 

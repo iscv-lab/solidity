@@ -7,5 +7,6 @@ export async function main(props: { address: string; approve: string }) {
   const { address, approve } = props;
   const ListBigFive = await ethers.getContractFactory("ListBigFive");
   const listBigFive = ListBigFive.attach(address);
-  await listBigFive.approve(approve, { from: deployer.address });
+  const tx = await listBigFive.approve(approve, { from: deployer.address });
+  await tx.wait()
 }

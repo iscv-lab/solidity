@@ -7,8 +7,8 @@ export async function main(props: { address: string; approve: string }) {
   const { address, approve } = props;
   const ListIIGLRResult = await ethers.getContractFactory('ListIIGLRResult');
   const listIIGLRResult = ListIIGLRResult.attach(address);
-  await listIIGLRResult.approve(approve, { from: deployer.address });
-  //   console.log("Token address:", (await listEmployee.owner()).toString());
+  const tx= await listIIGLRResult.approve(approve, { from: deployer.address });
+  await tx.wait()
 }
 
 // We recommend this pattern to be able to use async/await everywhere
