@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.8.12 <0.9.0;
+pragma solidity >=0.8.17 <0.9.0;
 
 import {Permission} from "../../../abstract/Permission.sol";
 import {EmployeeCV} from "../../../struct/employee/cv/EmployeeCVStruct.sol";

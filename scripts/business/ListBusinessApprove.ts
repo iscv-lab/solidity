@@ -7,7 +7,8 @@ export async function main(props: { address: string; approve: string }) {
   const { address, approve } = props;
   const ListBusiness = await ethers.getContractFactory("ListBusiness");
   const listBusiness = ListBusiness.attach(address);
-  await listBusiness.approve(approve, { from: deployer.address });
+  const tx = await listBusiness.approve(approve, { from: deployer.address });
+  await tx.wait()
   //   console.log("Token address:", (await listEmployee.owner()).toString());
 }
 

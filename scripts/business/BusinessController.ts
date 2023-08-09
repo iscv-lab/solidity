@@ -23,30 +23,22 @@ export const addIIGProfile = async (props: {
   const { iigAccountAddress, address } = props;
   const [deployer] = await ethers.getSigners();
 
-  const ListBusiness = await ethers.getContractFactory('ListBusiness');
+  const ListBusiness = await ethers.getContractFactory("ListBusiness");
   const listBusiness = ListBusiness.attach(address);
-  await listBusiness.add(
+  const tx = await listBusiness.add(
     {
       id: 0,
       user: iigAccountAddress,
-      name: "IIG Viet Name",
+      name: "IIG Viet Nam",
       phone: "1900 636929",
       professional: "education",
       email: "info@iigvietnam.edu.vn",
       github: "",
       linkedin: "https://www.linkedin.com/company/iig-vietnam/",
-      sourceImage: "",
+      sourceImage: "QmTVT8Efdy8Z6X3CF8CDaSR9XAJkfugVEog5yTFMTm4e9p",
       category: 1,
     },
     { from: deployer.address }
   );
+  await tx.wait();
 };
-// main({
-//   listBusinessAddress: "string",
-//   listBusinessPostAddress: "string",
-//   listBusinessApplyAddress: "string",
-//   listBusinessAppointmenAddress: "string",
-// }).catch((error) => {
-//   console.error(error);
-//   process.exitCode = 1;
-// });

@@ -20,8 +20,8 @@ contract EmployeeCVController is Ownable, ListEmployeeCursor, ListEmployeeCVCurs
         string memory source
     ) public onlyIdBelongstoAddress(employeeId) {
         EmployeeCV memory item = EmployeeCV(
-            employeeId,
             0,
+            employeeId,
             block.timestamp,
             source
         );

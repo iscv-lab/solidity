@@ -75,6 +75,28 @@ export type EmployeeSkillStructOutput = [
   BigNumber
 ] & { id: BigNumber; employeeId: BigNumber; title: string; level: BigNumber };
 
+export type BigFiveStruct = {
+  id: PromiseOrValue<BigNumberish>;
+  employeeId: PromiseOrValue<BigNumberish>;
+  startTime: PromiseOrValue<BigNumberish>;
+  endTime: PromiseOrValue<BigNumberish>;
+  cid: PromiseOrValue<string>;
+};
+
+export type BigFiveStructOutput = [
+  BigNumber,
+  BigNumber,
+  BigNumber,
+  BigNumber,
+  string
+] & {
+  id: BigNumber;
+  employeeId: BigNumber;
+  startTime: BigNumber;
+  endTime: BigNumber;
+  cid: string;
+};
+
 export type BusinessApplyStruct = {
   id: PromiseOrValue<BigNumberish>;
   employeeId: PromiseOrValue<BigNumberish>;
@@ -107,6 +129,7 @@ export interface EmployeeControllerInterface extends utils.Interface {
     "_checkExistEmployeeAccount()": FunctionFragment;
     "_checkExistSkill(uint256,string)": FunctionFragment;
     "_checkIdBelongsToPostId(uint256,string)": FunctionFragment;
+    "addBigFive(uint256,uint256,string)": FunctionFragment;
     "addEmployee(string,string,string,string,string,string,string)": FunctionFragment;
     "addSkill(uint256,string,uint256)": FunctionFragment;
     "applyPost(uint256,uint256,string)": FunctionFragment;
@@ -114,9 +137,13 @@ export interface EmployeeControllerInterface extends utils.Interface {
     "editSkill(uint256,uint256,uint256)": FunctionFragment;
     "getAllProfile()": FunctionFragment;
     "getAllSkill()": FunctionFragment;
+    "getBigFive(uint256)": FunctionFragment;
+    "getBigFives()": FunctionFragment;
     "getListAppliesPost()": FunctionFragment;
     "getProfile(uint256)": FunctionFragment;
+    "isDiffSevenDays(uint256)": FunctionFragment;
     "owner()": FunctionFragment;
+    "startStartSession(uint256)": FunctionFragment;
     "transferOwnership(address)": FunctionFragment;
   };
 
@@ -127,6 +154,7 @@ export interface EmployeeControllerInterface extends utils.Interface {
       | "_checkExistEmployeeAccount"
       | "_checkExistSkill"
       | "_checkIdBelongsToPostId"
+      | "addBigFive"
       | "addEmployee"
       | "addSkill"
       | "applyPost"
@@ -134,9 +162,13 @@ export interface EmployeeControllerInterface extends utils.Interface {
       | "editSkill"
       | "getAllProfile"
       | "getAllSkill"
+      | "getBigFive"
+      | "getBigFives"
       | "getListAppliesPost"
       | "getProfile"
+      | "isDiffSevenDays"
       | "owner"
+      | "startStartSession"
       | "transferOwnership"
   ): FunctionFragment;
 
@@ -159,6 +191,14 @@ export interface EmployeeControllerInterface extends utils.Interface {
   encodeFunctionData(
     functionFragment: "_checkIdBelongsToPostId",
     values: [PromiseOrValue<BigNumberish>, PromiseOrValue<string>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "addBigFive",
+    values: [
+      PromiseOrValue<BigNumberish>,
+      PromiseOrValue<BigNumberish>,
+      PromiseOrValue<string>
+    ]
   ): string;
   encodeFunctionData(
     functionFragment: "addEmployee",
@@ -206,6 +246,14 @@ export interface EmployeeControllerInterface extends utils.Interface {
     values?: undefined
   ): string;
   encodeFunctionData(
+    functionFragment: "getBigFive",
+    values: [PromiseOrValue<BigNumberish>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "getBigFives",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
     functionFragment: "getListAppliesPost",
     values?: undefined
   ): string;
@@ -213,7 +261,15 @@ export interface EmployeeControllerInterface extends utils.Interface {
     functionFragment: "getProfile",
     values: [PromiseOrValue<BigNumberish>]
   ): string;
+  encodeFunctionData(
+    functionFragment: "isDiffSevenDays",
+    values: [PromiseOrValue<BigNumberish>]
+  ): string;
   encodeFunctionData(functionFragment: "owner", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "startStartSession",
+    values: [PromiseOrValue<BigNumberish>]
+  ): string;
   encodeFunctionData(
     functionFragment: "transferOwnership",
     values: [PromiseOrValue<string>]
@@ -239,6 +295,7 @@ export interface EmployeeControllerInterface extends utils.Interface {
     functionFragment: "_checkIdBelongsToPostId",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(functionFragment: "addBigFive", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "addEmployee",
     data: BytesLike
@@ -255,23 +312,50 @@ export interface EmployeeControllerInterface extends utils.Interface {
     functionFragment: "getAllSkill",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(functionFragment: "getBigFive", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "getBigFives",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(
     functionFragment: "getListAppliesPost",
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "getProfile", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "isDiffSevenDays",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "startStartSession",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(
     functionFragment: "transferOwnership",
     data: BytesLike
   ): Result;
 
   events: {
+    "AddBigFive(uint256,uint256,string)": EventFragment;
     "OwnershipTransferred(address,address)": EventFragment;
   };
 
+  getEvent(nameOrSignatureOrTopic: "AddBigFive"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "OwnershipTransferred"): EventFragment;
 }
+
+export interface AddBigFiveEventObject {
+  employeeId: BigNumber;
+  sessionId: BigNumber;
+  cid: string;
+}
+export type AddBigFiveEvent = TypedEvent<
+  [BigNumber, BigNumber, string],
+  AddBigFiveEventObject
+>;
+
+export type AddBigFiveEventFilter = TypedEventFilter<AddBigFiveEvent>;
 
 export interface OwnershipTransferredEventObject {
   previousOwner: string;
@@ -338,6 +422,13 @@ export interface EmployeeController extends BaseContract {
       overrides?: CallOverrides
     ): Promise<[boolean]>;
 
+    addBigFive(
+      employeeId: PromiseOrValue<BigNumberish>,
+      sessionId: PromiseOrValue<BigNumberish>,
+      cid: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
     addEmployee(
       name: PromiseOrValue<string>,
       phone: PromiseOrValue<string>,
@@ -380,6 +471,13 @@ export interface EmployeeController extends BaseContract {
       overrides?: CallOverrides
     ): Promise<[EmployeeSkillStructOutput[]]>;
 
+    getBigFive(
+      id: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<[BigFiveStructOutput]>;
+
+    getBigFives(overrides?: CallOverrides): Promise<[BigFiveStructOutput[]]>;
+
     getListAppliesPost(
       overrides?: CallOverrides
     ): Promise<[BusinessApplyStructOutput[]]>;
@@ -389,7 +487,17 @@ export interface EmployeeController extends BaseContract {
       overrides?: CallOverrides
     ): Promise<[ProfileStructOutput]>;
 
+    isDiffSevenDays(
+      employeeId: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<[boolean]>;
+
     owner(overrides?: CallOverrides): Promise<[string]>;
+
+    startStartSession(
+      employeeId: PromiseOrValue<BigNumberish>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
 
     transferOwnership(
       newOwner: PromiseOrValue<string>,
@@ -422,6 +530,13 @@ export interface EmployeeController extends BaseContract {
     postId: PromiseOrValue<string>,
     overrides?: CallOverrides
   ): Promise<boolean>;
+
+  addBigFive(
+    employeeId: PromiseOrValue<BigNumberish>,
+    sessionId: PromiseOrValue<BigNumberish>,
+    cid: PromiseOrValue<string>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
 
   addEmployee(
     name: PromiseOrValue<string>,
@@ -463,6 +578,13 @@ export interface EmployeeController extends BaseContract {
 
   getAllSkill(overrides?: CallOverrides): Promise<EmployeeSkillStructOutput[]>;
 
+  getBigFive(
+    id: PromiseOrValue<BigNumberish>,
+    overrides?: CallOverrides
+  ): Promise<BigFiveStructOutput>;
+
+  getBigFives(overrides?: CallOverrides): Promise<BigFiveStructOutput[]>;
+
   getListAppliesPost(
     overrides?: CallOverrides
   ): Promise<BusinessApplyStructOutput[]>;
@@ -472,7 +594,17 @@ export interface EmployeeController extends BaseContract {
     overrides?: CallOverrides
   ): Promise<ProfileStructOutput>;
 
+  isDiffSevenDays(
+    employeeId: PromiseOrValue<BigNumberish>,
+    overrides?: CallOverrides
+  ): Promise<boolean>;
+
   owner(overrides?: CallOverrides): Promise<string>;
+
+  startStartSession(
+    employeeId: PromiseOrValue<BigNumberish>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
 
   transferOwnership(
     newOwner: PromiseOrValue<string>,
@@ -505,6 +637,13 @@ export interface EmployeeController extends BaseContract {
       postId: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<boolean>;
+
+    addBigFive(
+      employeeId: PromiseOrValue<BigNumberish>,
+      sessionId: PromiseOrValue<BigNumberish>,
+      cid: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<void>;
 
     addEmployee(
       name: PromiseOrValue<string>,
@@ -546,6 +685,13 @@ export interface EmployeeController extends BaseContract {
       overrides?: CallOverrides
     ): Promise<EmployeeSkillStructOutput[]>;
 
+    getBigFive(
+      id: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<BigFiveStructOutput>;
+
+    getBigFives(overrides?: CallOverrides): Promise<BigFiveStructOutput[]>;
+
     getListAppliesPost(
       overrides?: CallOverrides
     ): Promise<BusinessApplyStructOutput[]>;
@@ -555,7 +701,17 @@ export interface EmployeeController extends BaseContract {
       overrides?: CallOverrides
     ): Promise<ProfileStructOutput>;
 
+    isDiffSevenDays(
+      employeeId: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<boolean>;
+
     owner(overrides?: CallOverrides): Promise<string>;
+
+    startStartSession(
+      employeeId: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<void>;
 
     transferOwnership(
       newOwner: PromiseOrValue<string>,
@@ -564,6 +720,17 @@ export interface EmployeeController extends BaseContract {
   };
 
   filters: {
+    "AddBigFive(uint256,uint256,string)"(
+      employeeId?: null,
+      sessionId?: null,
+      cid?: null
+    ): AddBigFiveEventFilter;
+    AddBigFive(
+      employeeId?: null,
+      sessionId?: null,
+      cid?: null
+    ): AddBigFiveEventFilter;
+
     "OwnershipTransferred(address,address)"(
       previousOwner?: PromiseOrValue<string> | null,
       newOwner?: PromiseOrValue<string> | null
@@ -599,6 +766,13 @@ export interface EmployeeController extends BaseContract {
       id: PromiseOrValue<BigNumberish>,
       postId: PromiseOrValue<string>,
       overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    addBigFive(
+      employeeId: PromiseOrValue<BigNumberish>,
+      sessionId: PromiseOrValue<BigNumberish>,
+      cid: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
     addEmployee(
@@ -641,6 +815,13 @@ export interface EmployeeController extends BaseContract {
 
     getAllSkill(overrides?: CallOverrides): Promise<BigNumber>;
 
+    getBigFive(
+      id: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    getBigFives(overrides?: CallOverrides): Promise<BigNumber>;
+
     getListAppliesPost(overrides?: CallOverrides): Promise<BigNumber>;
 
     getProfile(
@@ -648,7 +829,17 @@ export interface EmployeeController extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
+    isDiffSevenDays(
+      employeeId: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
     owner(overrides?: CallOverrides): Promise<BigNumber>;
+
+    startStartSession(
+      employeeId: PromiseOrValue<BigNumberish>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
 
     transferOwnership(
       newOwner: PromiseOrValue<string>,
@@ -683,6 +874,13 @@ export interface EmployeeController extends BaseContract {
       id: PromiseOrValue<BigNumberish>,
       postId: PromiseOrValue<string>,
       overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    addBigFive(
+      employeeId: PromiseOrValue<BigNumberish>,
+      sessionId: PromiseOrValue<BigNumberish>,
+      cid: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
     addEmployee(
@@ -725,6 +923,13 @@ export interface EmployeeController extends BaseContract {
 
     getAllSkill(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
+    getBigFive(
+      id: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    getBigFives(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
     getListAppliesPost(
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
@@ -734,7 +939,17 @@ export interface EmployeeController extends BaseContract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
+    isDiffSevenDays(
+      employeeId: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
     owner(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    startStartSession(
+      employeeId: PromiseOrValue<BigNumberish>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
 
     transferOwnership(
       newOwner: PromiseOrValue<string>,

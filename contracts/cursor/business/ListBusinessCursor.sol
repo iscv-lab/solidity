@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.8.12 <0.9.0;
+pragma solidity >=0.8.17 <0.9.0;
 
 import {ListBusiness} from "../../database/business/ListBusiness.sol";
 import {Profile} from "../../struct/business/BusinessStruct.sol";

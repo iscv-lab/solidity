@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.8.12 <0.9.0;
+pragma solidity >=0.8.17 <0.9.0;
 
 import {ListEmployee} from "../../database/employee/ListEmployee.sol";
 import {Profile} from "../../struct/employee/EmployeeStruct.sol";

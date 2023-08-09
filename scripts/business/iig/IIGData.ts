@@ -17,7 +17,10 @@ export async function setAccount({
   const [deployer] = await ethers.getSigners();
   const IIGData = await ethers.getContractFactory("IIGData");
   const iigData = IIGData.attach(iigDataAddress);
-  await iigData.setIIGAccount(iigAccountAddress, { from: deployer.address });
+  const tx = await iigData.setIIGAccount(iigAccountAddress, {
+    from: deployer.address,
+  });
+  await tx.wait();
 }
 
 // main().catch((error) => {

@@ -1,6 +1,5 @@
 import { ethers } from "hardhat";
 
-
 export async function main(props: { address: string; approve: string }) {
   const [deployer] = await ethers.getSigners();
   const { address, approve } = props;
@@ -8,8 +7,10 @@ export async function main(props: { address: string; approve: string }) {
     "ListBusinessApply"
   );
   const listBusinessApply = ListBusinessApply.attach(address);
-  await listBusinessApply.approve(approve, { from: deployer.address });
-  //   console.log("Token address:", (await listEmployee.owner()).toString());
+  const tx = await listBusinessApply.approve(approve, {
+    from: deployer.address,
+  });
+  await tx.wait();
 }
 
 // We recommend this pattern to be able to use async/await everywhere
